@@ -12,7 +12,7 @@
 	<artifactId>trixlog-technical-challenge</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>trixlog-technical-challenge</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Trixlog job opportunity back-end technical challenge</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -37,6 +37,17 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-boot-starter</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>3.0.0</version>
 		</dependency>
 	</dependencies>
 
