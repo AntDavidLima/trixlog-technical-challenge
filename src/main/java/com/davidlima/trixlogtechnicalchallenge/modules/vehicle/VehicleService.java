@@ -1,5 +1,6 @@
 package com.davidlima.trixlogtechnicalchallenge.modules.vehicle;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -37,8 +38,20 @@ public class VehicleService {
 
     }
 
-    public List<Vehicle> findAll() {
-        return vehicleRepository.findAll();
+    public List<Vehicle> find(
+        LocalDate startDate,
+        LocalDate endDate,
+        String licensePlate,
+        String state,
+        String driverName
+    ) {
+        return vehicleRepository.find(
+            startDate,
+            endDate,
+            licensePlate,
+            state,
+            driverName
+        );
     }
 
     public Vehicle findById(Long id) {

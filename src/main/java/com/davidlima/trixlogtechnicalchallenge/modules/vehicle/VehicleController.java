@@ -6,8 +6,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lombok.AllArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,9 +33,21 @@ public class VehicleController {
     }
 
     @GetMapping
-    public List<Vehicle> index() {
+    public List<Vehicle> index(
+        @RequestParam(required = false) @DateTimeFormat(iso = ISO.DATE) LocalDate startDate,
+        @RequestParam(required = false) @DateTimeFormat(iso = ISO.DATE) LocalDate endDate,
+        @RequestParam(required = false) String licensePlate,
+        @RequestParam(required = false) String state,
+        @RequestParam(required = false) String driverName
+    ) {
 
-        return vehicleService.findAll();
+        return vehicleService.find(
+            startDate,
+            endDate,
+            licensePlate,
+            state,
+            driverName
+        );
 
     }
 
