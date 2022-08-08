@@ -1,3 +1,11 @@
 package com.davidlima.trixlogtechnicalchallenge.modules.driver;
 
-public record DriverForm(String name, String licenseNumber) {}
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+
+public record DriverForm(
+    @NotBlank(message = "Name is required")
+    String name,
+    @Pattern(regexp = "[0-9]{11}", message = "Invalid license number")
+    String licenseNumber
+) {}

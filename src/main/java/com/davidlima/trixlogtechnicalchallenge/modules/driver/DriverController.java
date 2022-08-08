@@ -2,6 +2,8 @@ package com.davidlima.trixlogtechnicalchallenge.modules.driver;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,12 +33,12 @@ public class DriverController {
     }
 
     @PostMapping
-    public Driver create(@RequestBody DriverForm form) {
+    public Driver create(@Valid @RequestBody DriverForm form) {
         return driverService.save(form);
     }
 
     @PutMapping
-    public Driver update(@RequestParam Long id, @RequestBody DriverForm form) {
+    public Driver update(@RequestParam Long id, @Valid @RequestBody DriverForm form) {
         return driverService.findAndUpdate(id, form);
     }
 
