@@ -47,7 +47,7 @@ public class VehicleService {
         State state,
         String driverName
     ) {
-        if (startDate != null && startDate.isAfter(endDate)) {
+        if (startDate != null && endDate != null && startDate.isAfter(endDate)) {
             throw new ConflictException("The start date is after the end date");
         }
 

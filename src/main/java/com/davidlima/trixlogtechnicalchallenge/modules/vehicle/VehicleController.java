@@ -15,6 +15,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -54,21 +55,21 @@ public class VehicleController {
     }
 
     @GetMapping("/{id}")
-    public Vehicle show(@RequestParam Long id) {
+    public Vehicle show(@PathVariable Long id) {
 
         return vehicleService.findById(id);
 
     }
 
     @DeleteMapping("/{id}")
-    public void destroy(@RequestParam Long id) {
+    public void destroy(@PathVariable Long id) {
 
         vehicleService.deleteById(id);
 
     }
 
     @PutMapping("/{id}")
-    public Vehicle update(@RequestParam Long id, @Valid @RequestBody VehicleForm form) {
+    public Vehicle update(@PathVariable Long id, @Valid @RequestBody VehicleForm form) {
 
         return vehicleService.findAndUpdate(id, form);
 

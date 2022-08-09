@@ -19,7 +19,7 @@ public class DriverService {
         driverRepository
             .findByLicenseNumber(form.licenseNumber())
             .ifPresent(driver -> {
-                throw new ConflictException("License plate already registered");
+                throw new ConflictException("License number already registered");
             });
 
         return driverRepository.save(
@@ -46,9 +46,9 @@ public class DriverService {
                 .findById(id)
                 .map(driver -> {
                     driverRepository
-                        .findByLicenseNumber(form.licenseNumber())
+                        .findByLicenseNumberAndIdNot(form.licenseNumber(), id)
                         .ifPresent(arg -> {
-                            throw new ConflictException("License plate already registered");
+                            throw new ConflictException("License number already belongs to another person");
                         });
                     driver.setName(form.name());
                     driver.setLicenseNumber(form.licenseNumber());
