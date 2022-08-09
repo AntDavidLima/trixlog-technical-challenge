@@ -9,6 +9,8 @@ import lombok.AllArgsConstructor;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,7 +28,7 @@ public class VehicleController {
     VehicleService vehicleService;
 
     @PostMapping
-    public Vehicle create(@RequestBody VehicleForm form) {
+    public Vehicle create(@Valid @RequestBody VehicleForm form) {
         
         return vehicleService.save(form);
 
@@ -37,7 +39,7 @@ public class VehicleController {
         @RequestParam(required = false) @DateTimeFormat(iso = ISO.DATE) LocalDate startDate,
         @RequestParam(required = false) @DateTimeFormat(iso = ISO.DATE) LocalDate endDate,
         @RequestParam(required = false) String licensePlate,
-        @RequestParam(required = false) String state,
+        @RequestParam(required = false) State state,
         @RequestParam(required = false) String driverName
     ) {
 
@@ -66,7 +68,7 @@ public class VehicleController {
     }
 
     @PutMapping("/{id}")
-    public Vehicle update(@RequestParam Long id, @RequestBody VehicleForm form) {
+    public Vehicle update(@RequestParam Long id, @Valid @RequestBody VehicleForm form) {
 
         return vehicleService.findAndUpdate(id, form);
 

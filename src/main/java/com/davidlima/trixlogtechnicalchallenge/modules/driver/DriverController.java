@@ -37,12 +37,12 @@ public class DriverController {
         return driverService.save(form);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public Driver update(@RequestParam Long id, @Valid @RequestBody DriverForm form) {
         return driverService.findAndUpdate(id, form);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public void destroy(@RequestParam Long id) {
         driverService.deleteById(id);
     }

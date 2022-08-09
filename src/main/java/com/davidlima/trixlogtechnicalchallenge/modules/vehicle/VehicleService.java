@@ -42,7 +42,7 @@ public class VehicleService {
         LocalDate startDate,
         LocalDate endDate,
         String licensePlate,
-        String state,
+        State state,
         String driverName
     ) {
         return vehicleRepository.find(

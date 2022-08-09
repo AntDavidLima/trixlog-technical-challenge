@@ -49,7 +49,7 @@ public class Vehicle {
     private String color;
 
     @Column(nullable = false)
-    private String state;
+    private State state;
 
     @Column(nullable = false)
     private LocalDate acquisitionDate;

@@ -22,7 +22,7 @@ public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
         LocalDate startDate,
         LocalDate endDate,
         String licensePlate,
-        String state,
+        State state,
         String driverName
     );
 
