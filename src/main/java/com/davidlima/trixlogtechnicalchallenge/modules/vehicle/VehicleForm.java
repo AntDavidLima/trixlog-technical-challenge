@@ -8,8 +8,11 @@ import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
 
 public record VehicleForm(
-    @Pattern(regexp = "[A-Za-z]{3}[0-9][A-Za-z0-9][0-9]{2}", message = "Invalid format")
-    @NotNull
+    @Pattern(
+        regexp = "[A-Za-z]{3}[0-9][A-Za-z0-9][0-9]{2}",
+        message = "Invalid format"
+    )
+    @NotNull()
     String licensePlate,
 
     @NotBlank(message = "Chassis is required")
@@ -27,11 +30,13 @@ public record VehicleForm(
     @NotBlank(message = "Color is required")
     String color,
 
-    @NotBlank(message = "State is required")
+    @NotNull(message = "State is required")
     State state,
 
     @NotNull(message = "Acquisition year is required")
-    @PastOrPresent(message = "Acquisition date can not be in the future, or can it be?")
+    @PastOrPresent(
+        message = "Acquisition date can not be in the future, or can it be?"
+    )
     LocalDate acquisitionDate,
 
     @NotNull(message = "Driver is required")

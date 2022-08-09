@@ -15,7 +15,7 @@ public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
         " where (cast(:startDate as date) is null or v.acquisitionDate >= :startDate) " +
         " and (cast(:endDate as date) is null or v.acquisitionDate <= :endDate) " +
         " and (:licensePlate is null or lower(v.licensePlate) like lower('%' || :licensePlate || '%')) " +
-        " and (:state is null or lower(v.state) = lower(:state)) " +
+        " and (:state is null or v.state = :state) " +
         " and (:driverName is null or lower(v.driver.name) like lower('%' || :driverName || '%')) "
     )
     List<Vehicle> find(
